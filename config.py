@@ -5,10 +5,7 @@ SPEAK_BACK = True
 
 # ========== VOICE INPUT ==========
 
-# ========== DEFAULT SETTING: MICROPHONE OFF ==========
-
-USE_VOICE_INPUT = False
-
+# ========== DEFAULT SETTING: MICROPHONE OFF UNTIL YOU PRESS SPEAK BUTTON ==========
 
 # ========== VOICE RECOGNITION ==========
 

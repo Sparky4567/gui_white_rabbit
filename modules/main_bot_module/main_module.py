@@ -5,16 +5,15 @@ from fuzzywuzzy import fuzz, process
 import random
 import speech_recognition as sr
 from config import USE_TRANSLATION_SERVICE
-from config import USE_VOICE_INPUT
 from config import ENABLE_OFFLINE_RECOGNITION
 from config import SIMILARITY_SCORE
 from config import USE_PREDEFINED_COMMANDS
+from config import SPEAK_BACK
 from modules.is_online.is_online import Is_Online
 from modules.speak_back.speak_module import Speak_Back
 from modules.speech_recognizers.speech_recognizers import Speech_recognizers
 from modules.random_emoji_module.random_emoji import Random_Emoji
 from modules.predefined_commands.predefined_commands_module import Predefined_Commands
-from modules.logo_print_module.logo_module import Logo_Module
 from googletrans import Translator
 import sys
 
@@ -205,7 +204,8 @@ class ChatbotGUI:
                 stored_answers = random.choice(stored_answers)
                 if stored_answers:
                     answer = stored_answers
-                    self.speak_module.speak_back(answer)
+                    if(SPEAK_BACK is True):
+                        self.speak_module.speak_back(answer)
                     random_emoji = self.emoji_picker.pick_random()
                     self.add_message(f"{self.title}: {str(answer.upper())} {random_emoji}")
                 else:
