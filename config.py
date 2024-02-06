@@ -1,0 +1,27 @@
+# ========== MAIN SETTINGS ==========
+SIMILARITY_SCORE = 93
+USE_TRANSLATION_SERVICE = False
+SPEAK_BACK = True
+
+# ========== VOICE INPUT ==========
+
+# ========== DEFAULT SETTING: MICROPHONE OFF ==========
+
+USE_VOICE_INPUT = False
+
+
+# ========== VOICE RECOGNITION ==========
+
+
+# ========== DEFAULT USAGE: POCKET SPHINX ==========
+
+
+ENABLE_OFFLINE_RECOGNITION = False
+
+# ========== DEFAULT MICROPHONE TIMEOUT IN SECONDS ==========
+
+DEFAULT_MIC_TIMEOUT = 10
+
+# ========== PREDEFINED COMMANDS USAGE ==========
+
+USE_PREDEFINED_COMMANDS = True
