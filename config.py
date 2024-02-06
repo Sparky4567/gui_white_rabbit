@@ -1,7 +1,7 @@
 # ========== MAIN SETTINGS ==========
 SIMILARITY_SCORE = 93
 USE_TRANSLATION_SERVICE = False
-SPEAK_BACK = True
+SPEAK_BACK = False
 
 # ========== VOICE INPUT ==========
 

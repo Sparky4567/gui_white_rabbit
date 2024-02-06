@@ -219,7 +219,8 @@ class ChatbotGUI:
                 stored_answers = random.choice(stored_answers)
                 if stored_answers:
                     answer = stored_answers
-                    self.speak_module.speak_back(answer)
+                    if(SPEAK_BACK is True):
+                        self.speak_module.speak_back(answer)
                     random_emoji = self.emoji_picker.pick_random()
                     self.add_message(f"{self.title}: {str(answer.upper())} {random_emoji}")
                 else:
