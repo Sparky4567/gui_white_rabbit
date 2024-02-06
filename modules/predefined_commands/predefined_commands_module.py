@@ -69,6 +69,25 @@ class Predefined_Commands:
             return True
         else:
             return False
+        
+    def search_giphy(self,words,sentence,passed_url):
+        if all(x in str(sentence).lower().split() for x in words):
+            new_sentence = sentence
+            for x in words:
+                new_sentence=str(new_sentence).replace(x,"").strip()
+            query_words = new_sentence.split()
+            giphy_url="{}/search/".format(passed_url)
+            for word_index, word in enumerate(query_words):
+                if(word_index==0):
+                    giphy_url = "{}{}".format(giphy_url,word)
+                else:
+                    giphy_url = "{}-{}".format(giphy_url,word)
+            if(SPEAK_BACK is True):
+                self.speak.speak_back("Searching google for {}".format(query_words))
+            webbrowser.open_new_tab(giphy_url)
+            return True
+        else:
+            return False
 
     def search_youtube_ini(self,passed_phrase):
         res = self.search_youtube(["search","youtube","for"],passed_phrase,self.youtube_url)
@@ -76,6 +95,10 @@ class Predefined_Commands:
     
     def search_google_ini(self,passed_phrase):
         res = self.search_google(["search","google","for"],passed_phrase,self.google_url)
+        return res
+    
+    def search_giphy_ini(self,passed_phrase):
+        res = self.search_google(["search","giphy","for"],passed_phrase,self.giphy_url)
         return res
             
     def check_browser_command_list(self,passed_message,passed_phrase):
@@ -142,6 +165,9 @@ class Predefined_Commands:
                 return res
             case passed_phrase if "search google for" in passed_phrase:
                 res = self.search_google_ini(passed_phrase)
+                return res
+            case passed_phrase if "search giphy for" in passed_phrase:
+                res = self.search_giphy_ini(passed_phrase)
                 return res
             case _:
                 return False
