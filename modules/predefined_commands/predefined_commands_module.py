@@ -11,6 +11,7 @@ class Predefined_Commands:
         self.youtube_url = "https://www.youtube.com/"
         self.google_url = "https://www.google.com/"
         self.gpt_url = "https://chat.openai.com/"
+        self.giphy_url = "https://giphy.com/"
 
     def construct_command(self,command_name, passed_terminal_command):
         command = passed_terminal_command
@@ -89,6 +90,9 @@ class Predefined_Commands:
             case "open gpt":
                 webbrowser.open(self.gpt_url)
                 return True
+            case "open giphy":
+                webbrowser.open(self.giphy_url)
+                return True
             case _:
                 return False
 
@@ -128,6 +132,9 @@ class Predefined_Commands:
                 res = self.check_browser_command_list("opening chat gpt", passed_phrase)
                 return res
             case "open new browser tab":
+                res = self.check_browser_command_list("opening new browser tab", passed_phrase)
+                return res
+            case "open giphy":
                 res = self.check_browser_command_list("opening new browser tab", passed_phrase)
                 return res
             case passed_phrase if "search youtube for" in passed_phrase:
