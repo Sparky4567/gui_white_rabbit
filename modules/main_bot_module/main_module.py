@@ -62,6 +62,9 @@ class ChatbotGUI:
 
         self.speech_button = tk.Button(self.master, text="Press to Speak", command=self.recognize_speech)
         self.speech_button.pack(pady=5)
+        
+        self.add_message("\n\n{}: {}\n\n".format(self.title,str("Waiting for your input...").upper()))
+        self.add_message("\n\n{}: {}\n\n".format(self.title,str("Type in something and press Enter!").upper()))
 
     def send_message(self, event=None):
         message = self.entry.get().strip()
@@ -86,7 +89,8 @@ class ChatbotGUI:
                 # Use the 'text' variable for further processing
             if(USE_PREDEFINED_COMMANDS is True and self.predefined_commands.check_command_list(str(text)) is True):
                 self.add_message("\n\n{}\n\n".format("Recognized a predefined command and executing it"))
-                self.add_message("\n\n{}\n\n".format("Reinitiating speech recognition"))
+                if(SPEAK_BACK is True):
+                    self.add_message("\n\n{}\n\n".format("Reinitiating speech recognition"))
                 self.recognize_speech()
             else:
                 self.add_message(str("\n\nRecognized text:{}\n\n").format(text))
@@ -242,3 +246,4 @@ class ChatbotGUI:
 
     def main(self):
         self.master.mainloop()
+
