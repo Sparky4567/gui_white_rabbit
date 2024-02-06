@@ -1,7 +1,7 @@
 import subprocess
 import webbrowser
 from modules.speak_back.speak_module import Speak_Back
-
+from config import SPEAK_BACK
 class Predefined_Commands:
     def __init__(self):
         self.error_message = "Predefined command was not found"
@@ -15,24 +15,21 @@ class Predefined_Commands:
     def construct_command(self,command_name, passed_terminal_command):
         command = passed_terminal_command
         try:
-            self.speak.speak_back(command_name)
+            if(SPEAK_BACK) is True:
+                self.speak.speak_back(command_name)
             subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             return True
         except Exception:
-            print("\n\n{}\n\n".format(self.error))
             return False
         
     def construct_output_command(self,command_name, passed_terminal_command):
         command = passed_terminal_command
         try:
-            self.speak.speak_back(command_name)
-            result = subprocess.run(command, stdout=subprocess.PIPE, text=True)
-            if result.returncode == 0:
-                print("\n\nCommand executed successfully\n\n")
-                print("Output:\n\n{}\n\n".format(result.stdout))
+            if(SPEAK_BACK) is True:
+                self.speak.speak_back(command_name)
+            subprocess.run(command, stdout=subprocess.PIPE, text=True)
             return True
         except Exception:
-            print("\n\n{}\n\n".format(self.error))
             return False
         
     def search_youtube(self,words,sentence,passed_url):
@@ -93,7 +90,6 @@ class Predefined_Commands:
                 webbrowser.open(self.gpt_url)
                 return True
             case _:
-                print("\n\n{}\n\n".format(self.error_message))
                 return False
 
     def check_command_list(self,passed_phrase):
@@ -141,5 +137,4 @@ class Predefined_Commands:
                 res = self.search_google_ini(passed_phrase)
                 return res
             case _:
-                print("\n\n{}\n\n".format(self.error_message))
                 return False
