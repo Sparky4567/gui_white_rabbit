@@ -25,19 +25,17 @@ class Speech_recognizers:
                     if(final_result!=""):
                         return final_result
                     else:
-                        
-                        self.recognize_speech_pocketsphinx()
+                        return False
                 except sr.UnknownValueError:
                     # THE THINGY CAN NOT UNDERSTAND THE PHRASE, SO IT STARTS THE RECOGNITION AGAIN
-                    self.recognize_speech_pocketsphinx()
+                    return False
                 except Exception as e:
                     # THE THINGY CAN NOT UNDERSTAND THE PHRASE, SO IT STARTS THE RECOGNITION AGAIN
                     if(str(e).lower().strip()=="" or str(e).lower().strip()==None):
-                        self.recognize_speech_pocketsphinx()
+                        return False
                     else:
-                        self.recognize_speech_pocketsphinx()
-                except sr.WaitTimeoutError:
-                    self.recognize_speech_pocketsphinx()
+                        return False
+                
 
     def recognize_speech(self):
         recognizer = sr.Recognizer()
@@ -52,12 +50,12 @@ class Speech_recognizers:
             if(result!=""):
                 return result
             else:
-                self.recognize_speech()
+                return False
             
         except sr.WaitTimeoutError:
-            self.recognize_speech()
+            return False
         except sr.UnknownValueError:
-            self.recognize_speech()
+            return False
         except sr.RequestError as e:
-            self.recognize_speech()
+            return False
 

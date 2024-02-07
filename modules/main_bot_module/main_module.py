@@ -83,8 +83,14 @@ class ChatbotGUI:
     def recognize_speech(self):
         if(ENABLE_OFFLINE_RECOGNITION is False):
             text = self.speech_recognizers.recognize_speech()
+            if(text is False):
+                self.add_message(f"{self.title()}: Could not understand audio input, try again.\n\n")
+                return
         else:
             text = self.speech_recognizers.recognize_speech_pocketsphinx()
+            if(text is False):
+                self.add_message(f"{self.title()}: Could not understand audio input, try again.\n\n")
+                return
         if text:
                 # Use the 'text' variable for further processing
             if(USE_PREDEFINED_COMMANDS is True and self.predefined_commands.check_command_list(str(text)) is True):
