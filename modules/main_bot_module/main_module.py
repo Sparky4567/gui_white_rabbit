@@ -35,7 +35,7 @@ class ChatbotGUI:
         self.screen_height = master.winfo_screenheight()
 
         # Set the window size
-        self.window_width = 250
+        self.window_width = 275
         self.window_height = 400
 
         # Calculate the position of the window
