@@ -20,6 +20,7 @@ import sys
 class ChatbotGUI:
     def __init__(self, master):
         self.master = master
+        self.master.attributes('-topmost', True)
         self.title = "Rabbit v.1.0"
         self.master.title(self.title)
         self.setup_database()
@@ -30,7 +31,17 @@ class ChatbotGUI:
         self.emoji_picker = Random_Emoji()
         self.offline_message = "Your offline. Translation services won't be used."
         self.predefined_commands = Predefined_Commands()
+        self.screen_width = master.winfo_screenwidth()
+        self.screen_height = master.winfo_screenheight()
 
+        # Set the window size
+        self.window_width = 250
+        self.window_height = 400
+
+        # Calculate the position of the window
+        self.x_position = self.screen_width - self.window_width
+        self.y_position = self.screen_height - self.window_height
+        self.master.geometry(f"{self.window_width}x{self.window_height}+{self.x_position}+{self.y_position}")
 
     def setup_database(self):
         self.conn = sqlite3.connect('database/chatbot_database.db')
