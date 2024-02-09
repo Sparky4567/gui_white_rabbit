@@ -145,6 +145,12 @@ class Predefined_Commands:
             case "go to store":
                 res = self.construct_command("opening snap store",["snap-store"])
                 return res
+            case "turn wifi on":
+                res = self.construct_command("turning wifi on",["nmcli","radio","wifi","on"])
+                return res
+            case "turn wifi off":
+                res = self.construct_command("turning wifi off",["nmcli","radio","wifi","off"])
+                return res
             case "list directory":
                 res = self.construct_output_command("list of a current directory",["ls","-la"])
                 return res
