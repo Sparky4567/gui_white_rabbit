@@ -212,7 +212,8 @@ class ChatbotGUI:
     def get_answer(self,user_input):
         if(USE_PREDEFINED_COMMANDS is True and self.predefined_commands.check_command_list(user_input) is True):
             self.add_message("\n\n{}\n\n".format("Recognized a predefined command and executing it"))
-            self.add_message("\n\n{}\n\n".format("Reinitiating speech recognition"))
+            if(SPEAK_BACK is True):
+                self.add_message("\n\n{}\n\n".format("Reinitiating speech recognition"))
             return
 
             # Find the best matching question
