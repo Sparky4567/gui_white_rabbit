@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import simpledialog
 import sqlite3
 from fuzzywuzzy import fuzz, process
-import random
+import random   
 import speech_recognition as sr
 from config import USE_TRANSLATION_SERVICE
 from config import ENABLE_OFFLINE_RECOGNITION
